@@ -1,3 +1,6 @@
+CREATE DATABASE ETL_ecommerce_analytics;
+USE ETL_ecommerce_analytics;
+
 CREATE TABLE clientes (
     id_cliente INT NOT NULL,
     nome VARCHAR(100) DEFAULT NULL,
