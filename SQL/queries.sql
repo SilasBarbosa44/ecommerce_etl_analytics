@@ -56,8 +56,8 @@ CREATE VIEW vw_crescimento_percentual AS
 WITH faturamento_mensal AS (
     SELECT
         c.nome AS cliente,
-        MONTH(p.id_pedido) AS mes,
-        YEAR(p.id_pedido) AS ano,
+        MONTH(p.data_pedido) AS mes,
+        YEAR(p.data_pedido) AS ano,
         SUM(i.quantidade * i.preco_unitario) AS faturamento
     FROM clientes c
     INNER JOIN pedidos p
@@ -196,7 +196,7 @@ ranking AS (
 faturamento_anterior AS (
     SELECT
         ranking.*,
-        LAG(faturamento, 1) OVER (
+        LAG(faturamento) OVER (
             ORDER BY ano, mes
         ) AS faturamento_anterior
     FROM ranking
